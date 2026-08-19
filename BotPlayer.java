@@ -71,10 +71,18 @@ public class BotPlayer implements Player {
                     } else {
                         // What to do if O can't win and X can't win on the next move
                         listNextMove = Tris.findFutureWinningMoves(board);
-                        int randomPickIndex = random.nextInt(listNextMove.size());
-                        x = listNextMove.get(randomPickIndex)[0];
-                        y = listNextMove.get(randomPickIndex)[1];
-                        board[x][y] = 'O';
+                        if (listNextMove.size() != 0) {
+                            int randomPickIndex = random.nextInt(listNextMove.size());
+                            x = listNextMove.get(randomPickIndex)[0];
+                            y = listNextMove.get(randomPickIndex)[1];
+                            board[x][y] = 'O';
+                        } else {
+                            // If none of the previous conditions is satisfied
+                            int randomPickIndex = random.nextInt(freeSpaces.size());
+                            x = freeSpaces.get(randomPickIndex)[0];
+                            y = freeSpaces.get(randomPickIndex)[1];
+                            board[x][y] = 'O';
+                        }
                     }
                 }
             }
