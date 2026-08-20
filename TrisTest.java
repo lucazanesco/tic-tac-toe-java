@@ -203,4 +203,24 @@ public class TrisTest {
         assertFalse(Tris.checkWinnerDiagonal(board));
     }
 
+    @Test
+    void checkWinner_emptyBoard_noWinner() {
+        assertFalse(Tris.checkWinner(board));
+    }
+
+    @Test
+    void checkWinner_casualBoard_yesWinner() {
+        board[0][0] = 'X';
+        board[0][1] = 'X';
+        board[0][2] = 'O';
+        board[1][0] = 'X';
+        board[1][1] = 'O';
+        board[1][2] = 'O';
+        board[2][0] = 'O';
+        board[2][1] = 'X';
+        board[1][2] = ' ';
+        assertTrue(Tris.checkWinner(board));
+    }
+    
+
 }
